@@ -1,28 +1,43 @@
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('Clone') {
+//             steps {
+//                 git branch: 'main', url: 'https://github.com/phamminhkhoa2k4/test-jenkinfile.git'
+//             }
+//         }
+
+//         stage('Build') {
+//             steps {
+//                 echo 'Building...'
+//             }
+//         }
+
+//         stage('Test') {
+//             steps {
+//                 echo 'Testing...'
+//             }
+//         }
+
+//         stage('Deploy') {
+//             steps {
+//                 echo 'Deploying...'
+//             }
+//         }
+//     }
+// }
 pipeline {
     agent any
-
     stages {
-        stage('Clone') {
-            steps {
-                git branch: 'main', url: 'https://github.com/phamminhkhoa2k4/test-jenkinfile.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building...'
+                sh 'docker build -t myapp .'
             }
         }
-
-        stage('Test') {
+        stage('Run') {
             steps {
-                echo 'Testing...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                sh 'docker run -d -p 8080:8080 myapp'
             }
         }
     }
