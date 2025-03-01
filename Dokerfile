@@ -1,0 +1,11 @@
+# Sử dụng Alpine Linux (nhẹ và nhanh)
+FROM alpine:latest
+
+# Đặt thư mục làm việc trong container
+WORKDIR /app
+
+# Sao chép file text từ thư mục hiện tại vào container
+COPY myfile.txt .
+
+# Lệnh mặc định khi container chạy (chỉ để giữ container chạy)
+CMD ["tail", "-f", "/dev/null"]
