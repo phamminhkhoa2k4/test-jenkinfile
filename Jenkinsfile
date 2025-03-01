@@ -6,6 +6,21 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/phamminhkhoa2k4/test-jenkinfile.git'
             }
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
         }
     }
 }
